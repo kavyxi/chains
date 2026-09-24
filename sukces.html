@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dziękujemy za zamówienie — KAVYXI CHAINS</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --aqua-deep:#0d6e73; --aqua-soft:#bfeaec; --aqua-mist:#eaf9f9;
+    --white:#ffffff; --ink:#0b2e30;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Jost',sans-serif; color:var(--ink); background:var(--aqua-mist);
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:2rem 1.2rem;
+    padding-top:calc(2rem + env(safe-area-inset-top,0px));
+    padding-bottom:calc(2rem + env(safe-area-inset-bottom,0px));
+  }
+  .card{
+    background:var(--white); border-radius:8px; max-width:440px; width:100%;
+    padding:2.4rem 2rem; text-align:center; box-shadow:0 20px 50px -25px rgba(13,110,115,.35);
+  }
+  .icon{
+    width:56px;height:56px;border-radius:50%;background:var(--aqua-mist);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;
+  }
+  h1{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;margin-bottom:.6rem;}
+  p{font-size:.92rem;color:#4d7274;line-height:1.5;}
+  .amount{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--aqua-deep);margin:1.1rem 0;}
+  .status{font-size:.8rem;margin-top:.4rem;}
+  a.back{
+    display:inline-block;margin-top:1.6rem;background:var(--ink);color:var(--white);
+    text-decoration:none;padding:.8rem 1.8rem;border-radius:999px;font-size:.85rem;letter-spacing:.04em;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0d6e73" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <h1>Dziękujemy za zamówienie</h1>
+    <p id="msg">Sprawdzamy status Twojej płatności...</p>
+    <div class="amount" id="amount"></div>
+    <a class="back" href="index.html">Wróć do sklepu</a>
+  </div>
+
+<script>
+// Odczytujemy session_id z adresu i weryfikujemy status na backendzie
+// (patrz endpoint GET /session-status w server.js) — nigdy nie ufamy
+// samemu faktowi przekierowania jako dowodowi zapłaty.
+const params = new URLSearchParams(window.location.search);
+const sessionId = params.get('session_id');
+
+// Podmień na adres swojego backendu, tak samo jak STRIPE_ENDPOINT w index.html
+const STATUS_ENDPOINT = "https://TWOJ-BACKEND.pl/session-status";
+
+async function checkStatus(){
+  const msg = document.getElementById('msg');
+  const amountEl = document.getElementById('amount');
+  if(!sessionId){
+    msg.textContent = "Brak numeru zamówienia w adresie.";
+    return;
+  }
+  try{
+    const res = await fetch(`${STATUS_ENDPOINT}?session_id=${encodeURIComponent(sessionId)}`);
+    const data = await res.json();
+    if(data.status === 'paid'){
+      msg.textContent = data.email
+        ? `Potwierdzenie zostało wysłane na ${data.email}.`
+        : "Płatność zakończona sukcesem.";
+      if(data.amount_total){
+        amountEl.textContent = (data.amount_total / 100).toFixed(2) + " zł";
+      }
+    } else {
+      msg.textContent = "Płatność nie została jeszcze potwierdzona. Jeśli pieniądze zostały pobrane, skontaktuj się z nami.";
+    }
+  }catch(err){
+    console.error(err);
+    msg.textContent = "Zamówienie przyjęte. Potwierdzenie otrzymasz e-mailem.";
+  }
+}
+checkStatus();
+</script>
+</body>
+</html>

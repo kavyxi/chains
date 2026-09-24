@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>KAVYXI CHAINS — Produkt</title>
+<meta name="description" content="KAVYXI CHAINS — diamentowa biżuteria. Odkryj wyjątkowe łańcuszki stworzone do noszenia na co dzień.">
+
+<meta name="theme-color" content="#0d6e73">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --aqua-deep:#0d6e73;
+  --aqua:#3fb6bb;
+  --aqua-soft:#bfeaec;
+  --aqua-mist:#eaf9f9;
+  --white:#ffffff;
+  --ink:#0b2e30;
+  --silver:#c7d6d6;
+  --sale:#e0574b;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Jost',sans-serif;
+  background:var(--white);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,.serif{
+  font-family:'Cormorant Garamond',serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img{
+  max-width:100%;
+}
+
+/* TOPBAR */
+
+.topbar{
+  background:var(--aqua-deep);
+  color:var(--white);
+  text-align:center;
+  font-size:.8rem;
+  letter-spacing:.04em;
+  padding:.55rem 1rem;
+  animation:slideDown .55s ease both;
+}
+
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--aqua-soft);
+}
+
+.nav{
+  max-width:1180px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:1rem 1.5rem;
+  gap:.75rem;
+}
+
+.logo{
+  font-size:1.5rem;
+  letter-spacing:.14em;
+  font-weight:600;
+  color:var(--aqua-deep);
+}
+
+.logo span{
+  color:var(--ink);
+  font-weight:400;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+}
+
+.back-btn,
+.cart-btn{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  background:none;
+  border:1px solid var(--aqua-deep);
+  color:var(--aqua-deep);
+  padding:.5rem 1rem;
+  border-radius:999px;
+  font-family:'Jost';
+  font-size:.85rem;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.back-btn:hover,
+.cart-btn:hover{
+  background:var(--aqua-deep);
+  color:var(--white);
+}
+
+/* PRODUCT */
+
+.product-page{
+  max-width:1180px;
+  margin:0 auto;
+  padding:3rem 1.5rem 6rem;
+}
+
+.breadcrumb{
+  font-size:.78rem;
+  color:#719394;
+  margin-bottom:2rem;
+}
+
+.breadcrumb a:hover{
+  color:var(--aqua-deep);
+}
+
+.product{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:5rem;
+  align-items:center;
+}
+
+/* IMAGE */
+
+.product-image-wrap{
+  position:relative;
+  aspect-ratio:1/1;
+  background:linear-gradient(
+    155deg,
+    var(--aqua-mist) 0%,
+    var(--aqua-soft) 100%
+  );
+  border-radius:4px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:fadeLift .7s ease both;
+}
+
+.product-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .45s ease, filter .45s ease;
+}
+.product-image-wrap:hover .product-image{
+  transform:scale(1.045);
+  filter:saturate(1.08) contrast(1.04);
+}
+
+.product-image-wrap::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(
+    120deg,
+    rgba(255,255,255,.2),
+    transparent 35%,
+    transparent 65%,
+    rgba(255,255,255,.15)
+  );
+}
+
+/* DETAILS */
+
+.product-details{
+  max-width:500px;
+  animation:fadeLift .75s .12s ease both;
+}
+
+.product-label{
+  font-size:.72rem;
+  letter-spacing:.22em;
+  color:var(--aqua-deep);
+  margin-bottom:.8rem;
+}
+
+.product-details h1{
+  font-size:clamp(2.5rem,5vw,4rem);
+  font-weight:500;
+  line-height:1;
+  margin-bottom:1rem;
+}
+
+.product-description{
+  color:#587879;
+  font-size:.95rem;
+  line-height:1.7;
+  margin-bottom:1.5rem;
+}
+
+.price{
+  font-size:1.55rem;
+  font-weight:600;
+  color:var(--ink);
+  margin-bottom:1.5rem;
+}
+
+.finish-row{
+  margin-bottom:1.4rem;
+}
+
+.finish-label{
+  display:block;
+  font-size:.8rem;
+  color:#587879;
+  margin-bottom:.55rem;
+}
+
+.finish-options{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.6rem;
+}
+
+.finish-option{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.4rem;
+  border:1px solid var(--aqua-soft);
+  border-radius:4px;
+  padding:.7rem .5rem;
+  font-size:.82rem;
+  color:#4d7274;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.finish-option input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+.finish-option::before{
+  content:"";
+  width:13px;
+  height:13px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#f8fbfb,#b9caca);
+  border:1px solid #b4c6c6;
+}
+
+.finish-option.gold::before{
+  background:linear-gradient(135deg,#fff3bd,#d4a938 55%,#8a681c);
+  border-color:#c69a2c;
+}
+
+.finish-option:has(input:checked){
+  border-color:var(--aqua-deep);
+  background:var(--aqua-mist);
+  color:var(--ink);
+}
+
+.shipping{
+  display:flex;
+  gap:.7rem;
+  align-items:center;
+  color:#4e7071;
+  font-size:.78rem;
+  padding:1rem 0;
+  border-top:1px solid var(--aqua-soft);
+  border-bottom:1px solid var(--aqua-soft);
+  margin-bottom:1.5rem;
+}
+
+/* QUANTITY */
+
+.quantity-row{
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+  margin-bottom:.8rem;
+}
+
+.quantity-label{
+  font-size:.8rem;
+  color:#587879;
+}
+
+.quantity{
+  display:flex;
+  align-items:center;
+  border:1px solid var(--aqua-soft);
+  border-radius:4px;
+  overflow:hidden;
+}
+
+.quantity button{
+  width:38px;
+  height:38px;
+  border:0;
+  background:white;
+  color:var(--ink);
+  cursor:pointer;
+  font-size:1rem;
+}
+
+.quantity button:hover{
+  background:var(--aqua-mist);
+}
+
+.quantity span{
+  width:40px;
+  text-align:center;
+  font-size:.85rem;
+}
+
+/* BUTTON */
+
+.add-btn{
+  width:100%;
+  border:0;
+  background:var(--ink);
+  color:white;
+  padding:1rem;
+  border-radius:4px;
+  font-family:'Jost';
+  font-size:.9rem;
+  letter-spacing:.04em;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.add-btn:hover{
+  background:var(--aqua-deep);
+}
+
+.buy-btn{
+  width:100%;
+  margin-top:.7rem;
+  border:1px solid var(--aqua-deep);
+  background:white;
+  color:var(--aqua-deep);
+  padding:1rem;
+  border-radius:4px;
+  font-family:'Jost';
+  font-size:.9rem;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.buy-btn:hover{
+  background:var(--aqua-deep);
+  color:white;
+}
+
+/* FEATURES */
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-top:4rem;
+  padding-top:2rem;
+  border-top:1px solid var(--aqua-soft);
+}
+
+.feature{
+  text-align:center;
+  padding:1.2rem;
+  animation:fadeLift .7s ease both;
+}
+
+.feature strong{
+  display:block;
+  font-family:'Cormorant Garamond';
+  font-size:1.15rem;
+  margin-bottom:.3rem;
+}
+
+.feature span{
+  font-size:.75rem;
+  color:#719394;
+}
+
+/* FOOTER */
+
+footer{
+  background:var(--ink);
+  color:var(--aqua-soft);
+  padding:3rem 1.5rem 2rem;
+  text-align:center;
+  font-size:.8rem;
+}
+
+footer .flogo{
+  font-family:'Cormorant Garamond';
+  font-size:1.3rem;
+  letter-spacing:.1em;
+  color:white;
+  margin-bottom:.6rem;
+}
+
+footer p{
+  color:#9fc4c5;
+  margin-top:.4rem;
+}
+
+/* CART MESSAGE */
+
+.cart-message{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%) translateY(100px);
+  background:var(--ink);
+  color:white;
+  padding:.8rem 1.3rem;
+  border-radius:999px;
+  font-size:.8rem;
+  z-index:100;
+  opacity:0;
+  transition:.3s;
+}
+
+.cart-message.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .product{
+    grid-template-columns:1fr;
+    gap:2.5rem;
+  }
+
+  .product-details{
+    max-width:none;
+  }
+
+  .product-page{
+    padding-top:2rem;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .back-btn{
+    display:none;
+  }
+}
+
+@media(max-width:500px){
+
+  .logo{
+    font-size:1.15rem;
+  }
+
+  .cart-btn{
+    font-size:.75rem;
+    padding:.45rem .8rem;
+  }
+
+  .topbar{
+    font-size:.68rem;
+    line-height:1.3;
+  }
+
+  .product-details h1{
+    font-size:2.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+}
+
+@keyframes fadeLift{
+  from{opacity:0;transform:translateY(18px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes slideDown{
+  from{opacity:0;transform:translateY(-12px);}
+  to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  KOD ICED = 20% ZNIŻKI · DARMOWA DOSTAWA OD 299 ZŁ · PŁATNOŚĆ BEZPIECZNA PRZEZ STRIPE
+</div>
+
+<header>
+  <div class="nav">
+
+    <a href="index.html" class="logo">
+      KAVYXI <span>CHAINS</span>
+    </a>
+
+    <div class="nav-right">
+
+      <a href="index.html" class="back-btn">
+        ← Kolekcja
+      </a>
+
+      <button class="cart-btn" onclick="goToCart()">
+        <svg width="16" height="16" viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6">
+          <path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 7H6"/>
+          <circle cx="10" cy="21" r="1"/>
+          <circle cx="17" cy="21" r="1"/>
+        </svg>
+
+        Koszyk (<span id="cart-count">0</span>)
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+
+<main class="product-page">
+
+  <div class="breadcrumb">
+    <a href="index.html">Kolekcja Aqua</a>
+    <span> / </span>
+    <span id="breadcrumb-name">Produkt</span>
+  </div>
+
+
+  <section class="product">
+
+    <div class="product-image-wrap">
+      <img
+        id="product-image"
+        class="product-image"
+        src=""
+        alt=""
+      >
+    </div>
+
+
+    <div class="product-details">
+
+      <div class="product-label">
+        KAVYXI CHAINS · KOLEKCJA AQUA
+      </div>
+
+      <h1 id="product-name">
+        Produkt
+      </h1>
+
+      <p
+        class="product-description"
+        id="product-description">
+      </p>
+
+      <div
+        class="price"
+        id="product-price">
+      </div>
+
+      <div class="finish-row">
+        <span class="finish-label">
+          Wersja
+        </span>
+
+        <div class="finish-options">
+          <label class="finish-option">
+            <input
+              type="radio"
+              name="finish"
+              value="silver"
+              checked
+              onchange="updateProductPrice()">
+            Srebrna
+          </label>
+
+          <label class="finish-option gold">
+            <input
+              type="radio"
+              name="finish"
+              value="gold"
+              onchange="updateProductPrice()">
+            Złota
+          </label>
+        </div>
+      </div>
+
+      <div class="shipping">
+        <span>✦</span>
+        <span>
+          Wysyłka w ciągu 24h · Bezpiecznie zapakowane
+        </span>
+      </div>
+
+      <div class="quantity-row">
+
+        <span class="quantity-label">
+          Ilość
+        </span>
+
+        <div class="quantity">
+
+          <button onclick="changeQuantity(-1)">
+            −
+          </button>
+
+          <span id="quantity">
+            1
+          </span>
+
+          <button onclick="changeQuantity(1)">
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+      <button
+        class="add-btn"
+        onclick="addCurrentToCart()">
+        Dodaj do koszyka
+      </button>
+
+      <button
+        class="buy-btn"
+        onclick="buyCurrent()">
+        Kup teraz
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <section class="features">
+
+    <div class="feature">
+      <strong>Srebro / stal chir.</strong>
+      <span>Materiały stworzone do codziennego noszenia</span>
+    </div>
+
+    <div class="feature">
+      <strong>Biżuteria wysadzana Mossaintami</strong>
+      <span>Subtelny blask przy każdym ruchu</span>
+    </div>
+
+    <div class="feature">
+      <strong>Wodoodporna biżuteria</strong>
+      <span>Stworzona, by towarzyszyć Ci każdego dnia</span>
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="flogo">
+    KAVYXI CHAINS
+  </div>
+
+  <p>
+    Biżuteria stworzona dla tych, którzy kochają subtelny blask.
+  </p>
+
+  <p>
+    © 2026 KAVYXI CHAINS. Wszystkie prawa zastrzeżone.
+  </p>
+
+</footer>
+
+
+<div
+  class="cart-message"
+  id="cart-message">
+  Dodano do koszyka
+</div>
+
+
+<script>
+
+const products = [
+
+  {
+    id:1,
+    name:"Iced Cuban Chain",
+    desc:"Wyrazisty łańcuszek Cuban Chain pokryty błyszczącymi kamieniami, które efektownie odbijają światło. Klasyczny, masywny design nadaje stylizacji mocnego charakteru i premium looku. Dostępny w kolorze srebrnym i złotym.",
+    price:149,
+    image:"zdj1.png",
+    goldImage:"zdj7.png"
+  },
+
+  {
+    id:2,
+    name:"Iced Cuban Bracelet",
+    desc:"Bransoletka w stylu Iced Cuban, łącząca masywny charakter z intensywnym blaskiem kamieni. Idealna jako mocny akcent codziennej stylizacji lub dodatek do kompletu z Iced Cuban Chain. Dostępna w kolorze srebrnym i złotym.",
+    price:109,
+    image:"zdj2.png",
+    goldImage:"zdj8.png"
+  },
+
+  {
+    id:3,
+    name:"Silver Chain",
+    desc:"Cienki i minimalistyczny łańcuszek stworzony dla osób, które preferują subtelny styl. Lekka forma sprawia, że świetnie prezentuje się samodzielnie oraz w połączeniu z innymi naszyjnikami. Dostępny w kolorze srebrnym i złotym.",
+    price:109,
+    image:"zdj3.png",
+    goldImage:"zdj9.png"
+  },
+
+  {
+    id:4,
+    name:"Mini Iced Cross",
+    desc:"Minimalistyczny łańcuszek z charakterystyczną zawieszką w kształcie krzyżyka, ozdobioną błyszczącymi kamieniami. Kompaktowy rozmiar pozwala zachować subtelny, ale efektowny wygląd. Dostępny w kolorze srebrnym i złotym.",
+    price:89,
+    image:"zdj4.png",
+    goldImage:"zdj10.png"
+  },
+
+  {
+    id:5,
+    name:"Classic Tennis Chain",
+    desc:"Ponadczasowy łańcuszek Tennis z rzędem błyszczących kamieni na całej długości. Elegancki design przyciąga światło i pasuje zarówno do codziennych stylizacji, jak i bardziej wyjątkowych okazji. Dostępny w kolorze srebrnym i złotym.",
+    price:139,
+    image:"zdj5.png",
+    goldImage:"zdj11.png"
+  },
+
+  {
+    id:6,
+    name:"Classic Tennis Bracelet",
+    desc:"Klasyczna bransoletka Tennis ozdobiona rzędem błyszczących kamieni. Elegancka, uniwersalna i łatwa do połączenia z inną biżuterią. Dostępna w kolorze srebrnym i złotym.",
+    price:79,
+    image:"zdj6.png",
+    goldImage:"zdj12.png"
+  }
+
+];
+
+const finishes = {
+  silver: {
+    label:"Srebrna",
+    priceAdd:0
+  },
+  gold: {
+    label:"Złota",
+    priceAdd:0
+  }
+};
+
+function normalizeCart(items){
+  if(!Array.isArray(items)){
+    return [];
+  }
+
+  return items
+    .map(item => ({
+      id:Number(item.id),
+      finish:finishes[item.finish] ? item.finish : "silver",
+      qty:Math.max(1, Number(item.qty) || 1)
+    }))
+    .filter(item => products.some(product => product.id === item.id));
+}
+
+function getSelectedFinish(){
+  const selected =
+    document.querySelector(
+      'input[name="finish"]:checked'
+    );
+
+  return selected ? selected.value : "silver";
+}
+
+function itemPrice(product, finish){
+  return product.price + (
+    finishes[finish]?.priceAdd || 0
+  );
+}
+
+function productImage(product, finish){
+  return finish === "gold"
+    ? product.goldImage
+    : product.image;
+}
+
+
+/* =========================
+   WYBÓR PRODUKTU Z URL
+========================= */
+
+const params = new URLSearchParams(
+  window.location.search
+);
+
+const productId = Number(
+  params.get("id")
+) || 1;
+
+const product =
+  products.find(p => p.id === productId)
+  || products[0];
+
+
+/* =========================
+   UZUPEŁNIENIE STRONY
+========================= */
+
+document.title =
+  `${product.name} — KAVYXI CHAINS`;
+
+document.getElementById(
+  "product-name"
+).textContent = product.name;
+
+document.getElementById(
+  "breadcrumb-name"
+).textContent = product.name;
+
+document.getElementById(
+  "product-description"
+).textContent = product.desc;
+
+document.getElementById(
+  "product-price"
+).textContent =
+  product.price + " zł";
+
+function updateProductPrice(){
+  const finish = getSelectedFinish();
+  const label = finishes[finish].label;
+
+  document.getElementById(
+    "product-price"
+  ).textContent =
+    itemPrice(product, finish) + " zł · " + label;
+
+  productImageEl.src =
+    productImage(product, finish);
+
+  productImageEl.alt =
+    product.name + " — " + label + " wersja KAVYXI CHAINS";
+}
+
+const productImageEl =
+  document.getElementById("product-image");
+
+productImageEl.src = product.image;
+
+productImageEl.alt =
+  product.name + " — Srebrna wersja KAVYXI CHAINS";
+
+updateProductPrice();
+
+
+/* =========================
+   ILOŚĆ
+========================= */
+
+let quantity = 1;
+
+function changeQuantity(amount){
+
+  quantity += amount;
+
+  if(quantity < 1){
+    quantity = 1;
+  }
+
+  if(quantity > 99){
+    quantity = 99;
+  }
+
+  document.getElementById(
+    "quantity"
+  ).textContent = quantity;
+}
+
+
+/* =========================
+   KOSZYK
+========================= */
+
+let cart = [];
+
+try {
+  const savedCart = localStorage.getItem("kavyxi_cart");
+
+  if (savedCart) {
+    cart = normalizeCart(JSON.parse(savedCart));
+  }
+} catch (error) {
+  console.error("Nie udało się wczytać koszyka:", error);
+}
+
+
+function saveCart(){
+  cart = normalizeCart(cart);
+
+  localStorage.setItem(
+    "kavyxi_cart",
+    JSON.stringify(cart)
+  );
+
+}
+
+
+function updateCartCount(){
+  cart = normalizeCart(cart);
+
+  const count =
+    cart.reduce(
+      (sum,item) => sum + item.qty,
+      0
+    );
+
+  document.getElementById(
+    "cart-count"
+  ).textContent = count;
+
+}
+
+
+function addToCart(id, qty = 1, finish = "silver"){
+  id = Number(id);
+  qty = Math.max(1, Number(qty) || 1);
+  finish = finishes[finish] ? finish : "silver";
+
+  const item =
+    cart.find(
+      item => item.id === id && item.finish === finish
+    );
+
+  if(item){
+
+    item.qty += qty;
+
+  }else{
+
+    cart.push({
+      id:id,
+      finish:finish,
+      qty:qty
+    });
+
+  }
+
+  saveCart();
+  updateCartCount();
+
+}
+
+
+function addCurrentToCart(){
+
+  addToCart(
+    product.id,
+    quantity,
+    getSelectedFinish()
+  );
+
+  showMessage(
+    `${product.name} (${finishes[getSelectedFinish()].label}) dodano do koszyka`
+  );
+
+}
+
+
+function buyCurrent(){
+
+  addToCart(
+    product.id,
+    quantity,
+    getSelectedFinish()
+  );
+
+  /*
+    Tutaj możesz później
+    podłączyć Stripe Checkout.
+
+    Na razie przechodzimy
+    do strony koszyka.
+  */
+
+  goToCart();
+
+}
+
+
+function goToCart(){
+
+  /*
+    Jeśli masz osobną stronę koszyka,
+    zmień tutaj na np.:
+
+    window.location.href = "koszyk.html";
+
+    Obecnie wracamy do sklepu.
+  */
+
+  window.location.href =
+    "index.html#produkty";
+
+}
+
+
+/* =========================
+   KOMUNIKAT
+========================= */
+
+let messageTimeout;
+
+function showMessage(text){
+
+  const message =
+    document.getElementById(
+      "cart-message"
+    );
+
+  message.textContent = text;
+
+  message.classList.add("show");
+
+  clearTimeout(messageTimeout);
+
+  messageTimeout =
+    setTimeout(() => {
+
+      message.classList.remove(
+        "show"
+      );
+
+    }, 2200);
+
+}
+
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>

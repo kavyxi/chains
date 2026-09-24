@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- ===== SEO: podstawowe meta ===== -->
+<title>KAVYXI CHAINS — Diamentowe łańcuszki i biżuteria | Kolekcja Aqua</title>
+<meta name="description" content="Srebrne i pozłacane łańcuszki z cyrkoniami szlifu diamentowego. Hipoalergiczna, wodoodporna biżuteria KAVYXI CHAINS — wysyłka 24h, płatność online przez Stripe.">
+<meta name="keywords" content="łańcuszki, biżuteria diamentowa, srebrna biżuteria, cyrkonie, KAVYXI CHAINS, biżuteria damska, naszyjniki">
+<meta name="robots" content="index, follow">
+<meta name="author" content="KAVYXI CHAINS">
+<link rel="canonical" href="https://kavyxichains.pl/">
+
+<!-- ===== SEO: Open Graph (Facebook, Messenger, LinkedIn) ===== -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KAVYXI CHAINS">
+<meta property="og:title" content="KAVYXI CHAINS — Złote łańcuszki | Kolekcja Aqua">
+<meta property="og:description" content="Mossaintowe łańcuchy hip-hop. Lekkie, wodoodporne, stworzone do noszenia codziennie.">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:url" content="https://kavyxi.github.io/chains">
+
+<!-- ===== SEO: Twitter Card ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KAVYXI CHAINS — Złote łańcuszki | Kolekcja Aqua">
+<meta name="twitter:description" content="Srebrne i pozłacane łańcuszki z mossaintami. Wysyłka 24h.">
+
+<!-- ===== Ikony / kolor motywu przeglądarki ===== -->
+<meta name="theme-color" content="#0d6e73">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+
+<!-- ===== Dane strukturalne Schema.org (bogate wyniki w Google) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "KAVYXI CHAINS",
+  "description": "Sklep internetowy z diamentową biżuterią — łańcuszki z cyrkoniami szlifu diamentowego.",
+  "image": "https://kavyxichains.pl/og-image.jpg",
+  "priceRange": "159-299 PLN",
+  "url": "https://kavyxi.github.io/chains"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --aqua-deep:#0d6e73;
+    --aqua:#3fb6bb;
+    --aqua-soft:#bfeaec;
+    --aqua-mist:#eaf9f9;
+    --white:#ffffff;
+    --ink:#0b2e30;
+    --silver:#c7d6d6;
+    --sale:#e0574b;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Jost',sans-serif;
+    background:var(--white);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;}
+  a{color:inherit;}
+  img{max-width:100%;}
+
+  /* top notice bar */
+  .topbar{
+    background:var(--aqua-deep);
+    color:var(--white);
+    text-align:center;
+    font-size:.8rem;
+    letter-spacing:.04em;
+    padding:.55rem 1rem;
+    animation:slideDown .55s ease both;
+  }
+
+  header{
+    position:sticky; top:0; z-index:20;
+    padding-top:env(safe-area-inset-top,0px);
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--aqua-soft);
+  }
+  .nav{
+    max-width:1180px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1rem 1.5rem;
+    gap:.75rem;flex-wrap:wrap;
+  }
+  @media(max-width:380px){
+    .logo{font-size:1.15rem;}
+    .cart-btn{font-size:.75rem;padding:.45rem .8rem;}
+    .topbar{font-size:.68rem;line-height:1.3;}
+  }
+  .logo{font-size:1.5rem;letter-spacing:.14em;font-weight:600;color:var(--aqua-deep);}
+  .logo span{color:var(--ink);font-weight:400;}
+  .cart-btn{
+    display:flex;align-items:center;gap:.5rem;
+    background:none;border:1px solid var(--aqua-deep);
+    color:var(--aqua-deep);
+    padding:.5rem 1rem;border-radius:999px;
+    font-family:'Jost'; font-size:.85rem; cursor:pointer;
+    transition:background .2s,color .2s;
+  }
+  .cart-btn:hover{background:var(--aqua-deep);color:var(--white);}
+
+  /* hero */
+  .hero{
+    position:relative;
+    background:radial-gradient(120% 140% at 20% 0%, var(--aqua-mist) 0%, var(--aqua-soft) 45%, var(--aqua) 100%);
+    padding:5.5rem 1.5rem 6rem;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.9), transparent),
+      radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.8), transparent),
+      radial-gradient(1.5px 1.5px at 85% 20%, rgba(255,255,255,.9), transparent),
+      radial-gradient(1.5px 1.5px at 40% 80%, rgba(255,255,255,.7), transparent),
+      radial-gradient(1.5px 1.5px at 55% 15%, rgba(255,255,255,.8), transparent);
+    opacity:.9;
+  }
+  .hero-inner{position:relative;max-width:680px;margin:0 auto;}
+  .hero p.eyebrow{
+    font-size:.78rem;letter-spacing:.25em;color:var(--aqua-deep);margin-bottom:1rem;
+    animation:fadeLift .7s .1s ease both;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,6vw,4.2rem);
+    font-weight:500;color:var(--ink);line-height:1.05;
+    animation:fadeLift .8s .18s ease both;
+  }
+  .hero p.sub{
+    margin-top:1.1rem;font-size:1.05rem;color:#1c4b4d;max-width:480px;margin-left:auto;margin-right:auto;
+    animation:fadeLift .8s .28s ease both;
+  }
+  .hero .cta{
+    margin-top:2.2rem;display:inline-block;
+    background:var(--ink);color:var(--white);
+    padding:.9rem 2.2rem;border-radius:999px;
+    text-decoration:none;font-size:.9rem;letter-spacing:.06em;
+    transition:transform .2s, box-shadow .2s;
+    animation:fadeLift .8s .38s ease both;
+  }
+  .hero .cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -18px rgba(11,46,48,.7);}
+
+  /* products */
+  .section-title{
+    text-align:center;max-width:640px;margin:0 auto;padding:4.5rem 1.5rem 1rem;
+  }
+  .section-title h2{font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:500;}
+  .section-title p{color:#4d7274;margin-top:.6rem;font-size:.95rem;}
+
+  .grid{
+    max-width:1180px;margin:0 auto;padding:2rem 1.5rem 5rem;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;
+  }
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr;gap:1.5rem;}}
+
+  .card{
+    background:var(--white);
+    border:1px solid #e3f2f2;
+    border-radius:4px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:box-shadow .25s, transform .25s;
+    animation:cardIn .6s ease both;
+  }
+  .card:hover{box-shadow:0 18px 40px -20px rgba(13,110,115,.35);transform:translateY(-3px);}
+
+  .card-media{
+    position:relative;
+    aspect-ratio:1/1;
+    background:linear-gradient(155deg,var(--aqua-mist) 0%, var(--aqua-soft) 100%);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .card-media img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .45s ease, filter .45s ease;
+  }
+  .card:hover .card-media img{transform:scale(1.055);filter:saturate(1.08) contrast(1.04);}
+  .card-media svg{width:56%;height:56%;}
+  .badge{
+    position:absolute;top:.8rem;left:.8rem;
+    background:var(--sale);color:var(--white);
+    font-size:.68rem;letter-spacing:.06em;
+    padding:.3rem .6rem;border-radius:999px;
+  }
+  .card-body{padding:1.2rem 1.3rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;flex:1;}
+  .card-body h3{font-size:1.25rem;font-weight:500;}
+  .price-row{display:flex;align-items:baseline;gap:.6rem;margin-top:.2rem;}
+  .price-old{text-decoration:line-through;color:#9db3b3;font-size:.9rem;}
+  .price-new{font-size:1.25rem;font-weight:600;color:var(--aqua-deep);}
+  .price-plain{font-size:1.25rem;font-weight:600;color:var(--ink);}
+  .card-actions{margin-top:auto;display:flex;gap:.6rem;padding-top:.9rem;}
+  .finish-options{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.5rem;}
+  .finish-option{
+    position:relative;display:flex;align-items:center;justify-content:center;gap:.35rem;
+    border:1px solid var(--aqua-soft);border-radius:4px;padding:.48rem .35rem;
+    font-size:.76rem;color:#4d7274;cursor:pointer;transition:border-color .2s, background .2s, color .2s;
+  }
+  .finish-option input{position:absolute;opacity:0;pointer-events:none;}
+  .finish-option::before{
+    content:"";width:12px;height:12px;border-radius:50%;
+    background:linear-gradient(135deg,#f8fbfb,#b9caca);border:1px solid #b4c6c6;
+  }
+  .finish-option.gold::before{background:linear-gradient(135deg,#fff3bd,#d4a938 55%,#8a681c);border-color:#c69a2c;}
+  .finish-option:has(input:checked){border-color:var(--aqua-deep);background:var(--aqua-mist);color:var(--ink);}
+  .btn{
+    flex:1;text-align:center;padding:.65rem .5rem;border-radius:4px;
+    font-size:.78rem;letter-spacing:.03em;cursor:pointer;border:1px solid var(--aqua-deep);
+    background:none;color:var(--aqua-deep);transition:background .2s,color .2s;
+    font-family:'Jost';
+  }
+  .btn:hover{background:var(--aqua-deep);color:var(--white);}
+  .btn.primary{background:var(--ink);border-color:var(--ink);color:var(--white);}
+  .btn.primary:hover{background:var(--aqua-deep);border-color:var(--aqua-deep);}
+
+  /* trust strip */
+  .trust{
+    background:var(--aqua-mist);
+    padding:2.6rem 1.5rem;
+    display:flex;flex-wrap:wrap;justify-content:center;gap:2.5rem;
+    text-align:center;font-size:.8rem;color:#255b5d;letter-spacing:.03em;
+  }
+  .trust div{display:flex;flex-direction:column;gap:.3rem;align-items:center;max-width:180px;}
+  .trust strong{font-family:'Cormorant Garamond';font-size:1.05rem;color:var(--ink);font-weight:600;}
+
+  footer{
+    background:var(--ink);color:var(--aqua-soft);
+    padding:3rem 1.5rem 2rem;
+    text-align:center;font-size:.8rem;
+  }
+  footer .flogo{font-family:'Cormorant Garamond';font-size:1.3rem;letter-spacing:.1em;color:var(--white);margin-bottom:.6rem;}
+  footer p{color:#9fc4c5;margin-top:.4rem;}
+
+  /* cart drawer */
+  .overlay{
+    position:fixed;inset:0;background:rgba(11,46,48,.4);
+    opacity:0;pointer-events:none;transition:opacity .25s;z-index:40;
+  }
+  .overlay.open{opacity:1;pointer-events:auto;}
+  .drawer{
+    position:fixed;top:0;right:0;height:100%;width:min(400px,100%);
+    background:var(--white);z-index:50;
+    transform:translateX(100%);transition:transform .3s ease;
+    display:flex;flex-direction:column;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.3rem 1.4rem;border-bottom:1px solid var(--aqua-soft);
+  }
+  .drawer-head h3{font-family:'Cormorant Garamond';font-size:1.4rem;}
+  .drawer-head button{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--ink);}
+  .drawer-items{flex:1;overflow-y:auto;padding:1rem 1.4rem;display:flex;flex-direction:column;gap:1rem;}
+  .drawer-item{display:flex;gap:.8rem;align-items:center;font-size:.85rem;}
+  .drawer-item .thumb{
+    width:58px;height:58px;border-radius:4px;flex-shrink:0;
+    background:linear-gradient(155deg,var(--aqua-mist),var(--aqua-soft));
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+  }
+  .drawer-item .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .drawer-item .finish{color:#0d6e73;font-size:.72rem;margin-top:.1rem;}
+  .drawer-item .qty{color:#5b7f80;font-size:.78rem;}
+  .drawer-item .remove{margin-left:auto;background:none;border:none;color:#b7cbcb;cursor:pointer;font-size:1rem;}
+  .drawer-empty{color:#8fabab;font-size:.85rem;text-align:center;padding:2rem 0;}
+  .drawer-foot{border-top:1px solid var(--aqua-soft);padding:1.2rem 1.4rem 1.4rem;}
+  .drawer-foot .total{display:flex;justify-content:space-between;font-size:1rem;margin-bottom:1rem;}
+  .drawer-foot .total strong{font-family:'Cormorant Garamond';font-size:1.3rem;}
+  .checkout-btn{
+    width:100%;padding:.9rem;border:none;border-radius:4px;
+    background:var(--ink);color:var(--white);font-family:'Jost';font-size:.88rem;
+    letter-spacing:.04em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;
+  }
+  .checkout-btn:hover{background:var(--aqua-deep);}
+  .stripe-note{font-size:.68rem;color:#8fabab;text-align:center;margin-top:.6rem;}
+
+  .promo-row{display:flex;gap:.5rem;margin-bottom:1rem;}
+  .promo-row input{
+    flex:1;border:1px solid var(--aqua-soft);border-radius:4px;
+    padding:.6rem .7rem;font-family:'Jost';font-size:.82rem;
+    text-transform:uppercase;letter-spacing:.04em;color:var(--ink);
+  }
+  .promo-row input:focus{outline:none;border-color:var(--aqua-deep);}
+  .promo-row button{
+    border:1px solid var(--ink);background:none;color:var(--ink);
+    border-radius:4px;padding:.6rem 1rem;font-family:'Jost';font-size:.78rem;
+    letter-spacing:.03em;cursor:pointer;transition:background .2s,color .2s;
+  }
+  .promo-row button:hover{background:var(--ink);color:var(--white);}
+  .promo-msg{font-size:.74rem;margin:-.5rem 0 .8rem;min-height:1em;}
+  .promo-msg.ok{color:#0d6e73;}
+  .promo-msg.err{color:#e0574b;}
+  .total-line{display:flex;justify-content:space-between;font-size:.85rem;color:#5b7f80;margin-bottom:.35rem;}
+  .total-line.discount{color:#e0574b;}
+
+  @media (prefers-color-scheme: dark){}
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important;}
+  }
+  @keyframes fadeLift{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes slideDown{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes cardIn{from{opacity:0;transform:translateY(22px) scale(.98);}to{opacity:1;transform:translateY(0) scale(1);}}
+</style>
+</head>
+<body>
+
+<div class="topbar">KOD ICED = 20% ZNIŻKI · DARMOWA DOSTAWA OD 299 ZŁ · PŁATNOŚĆ BEZPIECZNA PRZEZ STRIPE</div>
+
+<header>
+  <div class="nav">
+    <div class="logo">KAVYXI <span>CHAINS</span></div>
+    <button class="cart-btn" onclick="openCart()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 7H6"/><circle cx="10" cy="21" r="1"/><circle cx="17" cy="21" r="1"/></svg>
+      Koszyk (<span id="cart-count">0</span>)
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">DIAMENTOWA BIŻUTERIA · EDYCJA AQUA</p>
+    <h1>Łańcuszki, które<br>łapią światło</h1>
+    <p class="sub">Ręcznie wykończone srebrne i pozłacane łańcuszki z cyrkoniami szlifu diamentowego. Lekkie, wodoodporne, stworzone do noszenia codziennie.</p>
+    <a href="#produkty" class="cta">Zobacz kolekcję</a>
+  </div>
+</section>
+
+<div class="section-title" id="produkty">
+  <h2>Kolekcja Aqua</h2>
+  <p>Sześć łańcuszków, jedna woda — od delikatnych minimali po wyraziste diamentowe akcenty.</p>
+</div>
+
+<div class="grid" id="product-grid"></div>
+
+<div class="trust">
+  <div><strong>Srebro / stal chir.</strong>Hipoalergiczne, nie czernieje</div>
+  <div><strong>Kamienie Mossaint</strong>Biżuteria wysadzana Mossaintami</div>
+  <div><strong>Wysyłka 48h</strong>Bezpiecznie pakowane</div>
+  <div><strong>Szybka i bezpieczna płatność</strong>Karta, Blik, Apple Pay i więcej</div>
+</div>
+
+<footer>
+  <div class="flogo">KAVYXI CHAINS</div>
+  <p>Biżuteria stworzona dla tych, którzy kochają subtelny blask.</p>
+  <p>© 2026 KAVYXI CHAINS. Wszystkie prawa zastrzeżone.</p>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>Twój koszyk</h3>
+    <button onclick="closeCart()">&times;</button>
+  </div>
+  <div class="drawer-items" id="drawer-items"></div>
+  <div class="drawer-foot">
+    <div class="promo-row">
+      <input type="text" id="promo-input" placeholder="Kod rabatowy" maxlength="20">
+      <button onclick="applyPromo()">Zastosuj</button>
+    </div>
+    <div class="promo-msg" id="promo-msg"></div>
+    <div class="total-line"><span>Suma częściowa</span><span id="drawer-subtotal">0 zł</span></div>
+    <div class="total-line discount" id="drawer-discount-row" style="display:none;"><span>Rabat ICED (-20%)</span><span id="drawer-discount">-0 zł</span></div>
+    <div class="total-line" id="drawer-shipping-row" style="display:none;"><span>Dostawa</span><span id="drawer-shipping">0 zł</span></div>
+    <div class="total"><span>Razem</span><strong id="drawer-total">0 zł</strong></div>
+    <button class="checkout-btn" onclick="goToStripeCheckout()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      Przejdź do płatności
+    </button>
+    <p class="stripe-note">Miejsce na integrację Stripe Checkout — patrz funkcja goToStripeCheckout()</p>
+  </div>
+</div>
+
+<script>
+// ---- Ikony placeholder (do podmiany na zdj1.png dla każdego produktu) ----
+function chainIcon(variant){
+  const icons = {
+    a:`<svg viewBox="0 0 100 100" fill="none" stroke="#0d6e73" stroke-width="2.2"><circle cx="50" cy="18" r="9"/><circle cx="34" cy="32" r="7"/><circle cx="66" cy="32" r="7"/><circle cx="50" cy="46" r="7"/><path d="M50 53 L50 78" stroke-width="2"/><circle cx="50" cy="86" r="10" fill="#bfeaec" stroke="#0d6e73"/><path d="M45 86 L50 91 L58 81" stroke="#0d6e73" stroke-width="2.5" fill="none"/></svg>`,
+    b:`<svg viewBox="0 0 100 100" fill="none" stroke="#0d6e73" stroke-width="2.2"><circle cx="30" cy="20" r="8"/><circle cx="50" cy="16" r="8"/><circle cx="70" cy="20" r="8"/><circle cx="40" cy="34" r="7"/><circle cx="60" cy="34" r="7"/><path d="M50 41 L50 62" stroke-width="2"/><polygon points="50,60 62,78 50,92 38,78" fill="#bfeaec" stroke="#0d6e73"/></svg>`,
+    c:`<svg viewBox="0 0 100 100" fill="none" stroke="#0d6e73" stroke-width="2.2"><circle cx="50" cy="20" r="8"/><circle cx="50" cy="36" r="7"/><path d="M50 43 L50 60" stroke-width="2"/><circle cx="50" cy="72" r="12" fill="#bfeaec" stroke="#0d6e73"/></svg>`
+  };
+  return icons[variant]||icons.a;
+}
+
+// ---- Dane produktów ----
+const products = [
+  {id:1, name:"Iced Cuban Chain", price:149, image:"zdj1.png", goldImage:"zdj7.png"},
+  {id:2, name:"Iced Cuban Bracelet", price:109, image:"zdj2.png", goldImage:"zdj8.png"},
+  {id:3, name:"Silver Chain", price:109, image:"zdj3.png", goldImage:"zdj9.png"},
+  {id:4, name:"Mini Iced Cross", price:89, image:"zdj4.png", goldImage:"zdj10.png"},
+  {id:5, name:"Classic Tennis Chain", price:139, image:"zdj5.png", goldImage:"zdj11.png"},
+  {id:6, name:"Classic Tennis Bracelet", price:79, image:"zdj6.png", goldImage:"zdj12.png"},
+];
+
+const finishes = {
+  silver: { label: "Srebrna", priceAdd: 0 },
+  gold: { label: "Złota", priceAdd: 0 }
+};
+
+function normalizeCart(items){
+  if(!Array.isArray(items)){
+    return [];
+  }
+
+  return items
+    .map(item => ({
+      id:Number(item.id),
+      finish:finishes[item.finish] ? item.finish : "silver",
+      qty:Math.max(1, Number(item.qty) || 1)
+    }))
+    .filter(item => products.some(product => product.id === item.id));
+}
+
+function getSelectedFinish(id){
+  const selected = document.querySelector(`input[name="finish-${id}"]:checked`);
+  return selected ? selected.value : "silver";
+}
+
+function itemPrice(product, finish){
+  return product.price + (finishes[finish]?.priceAdd || 0);
+}
+
+function productImage(product, finish){
+  return finish === "gold" ? product.goldImage : product.image;
+}
+
+function updateCardFinish(id, finish){
+  const product = products.find(item => item.id === Number(id));
+  const image = document.getElementById(`product-image-${id}`);
+
+  if(!product || !image){
+    return;
+  }
+
+  image.src = productImage(product, finish);
+  image.alt = `${product.name} — ${finishes[finish].label} wersja KAVYXI CHAINS`;
+}
+
+const grid = document.getElementById('product-grid');
+grid.innerHTML = products.map((p, index) => `
+  <div class="card" style="animation-delay:${index * 70}ms">
+    <div class="card-media">
+      <img id="product-image-${p.id}" src="${p.image}" alt="${p.name} — Srebrna wersja KAVYXI CHAINS" loading="lazy">
+    </div>
+    <div class="card-body">
+      <h3>${p.name}</h3>
+      <div class="price-row">
+        <span class="price-plain">${p.price} zł</span>
+      </div>
+      <div class="finish-options" aria-label="Wybierz wykończenie dla ${p.name}">
+        <label class="finish-option">
+          <input type="radio" name="finish-${p.id}" value="silver" checked onchange="updateCardFinish(${p.id}, 'silver')">
+          Srebrna
+        </label>
+        <label class="finish-option gold">
+          <input type="radio" name="finish-${p.id}" value="gold" onchange="updateCardFinish(${p.id}, 'gold')">
+          Złota
+        </label>
+      </div>
+      <div class="card-actions">
+        <button class="btn" onclick="addToCart(${p.id}, getSelectedFinish(${p.id}))">Do koszyka</button>
+        <a class="btn primary" href="produkt.html?id=${p.id}">Zobacz produkt</a>
+      </div>
+    </div>
+  </div>
+`).join('');
+
+// ---- Koszyk (stan w pamięci, per widz przeglądarki) ----
+let cart = [];
+
+let promoApplied = false;
+
+try {
+  const savedCart = localStorage.getItem("kavyxi_cart");
+
+  if (savedCart) {
+    cart = normalizeCart(JSON.parse(savedCart));
+  }
+} catch (error) {
+  console.error("Nie udało się wczytać koszyka:", error);
+}
+const PROMO_CODE = "ICED";
+const PROMO_DISCOUNT = 0.20;
+const FREE_SHIPPING_THRESHOLD = 299;
+const SHIPPING_FEE = 10;
+
+function applyPromo(){
+  const input = document.getElementById('promo-input');
+  const msg = document.getElementById('promo-msg');
+  const code = input.value.trim().toUpperCase();
+  if(code === PROMO_CODE){
+    promoApplied = true;
+    msg.textContent = "Kod ICED zastosowany — rabat 20%";
+    msg.className = "promo-msg ok";
+  } else {
+    promoApplied = false;
+    msg.textContent = "Nieprawidłowy kod rabatowy";
+    msg.className = "promo-msg err";
+  }
+  renderCart();
+}
+
+function saveCart() {
+  cart = normalizeCart(cart);
+  localStorage.setItem(
+    "kavyxi_cart",
+    JSON.stringify(cart)
+  );
+}
+
+function addToCart(id, finish = "silver"){
+  id = Number(id);
+  finish = finishes[finish] ? finish : "silver";
+
+  const item = cart.find(
+    c => c.id === id && c.finish === finish
+  );
+
+  if(item){
+    item.qty++;
+  }else{
+    cart.push({
+      id:id,
+      finish:finish,
+      qty:1
+    });
+  }
+
+  saveCart();
+  renderCart();
+  openCart();
+}
+function removeFromCart(id, finish){
+  id = Number(id);
+  finish = finishes[finish] ? finish : "silver";
+
+  cart = cart.filter(
+    c => !(c.id === id && c.finish === finish)
+  );
+
+  saveCart();
+  renderCart();
+}
+
+function renderCart(){
+  cart = normalizeCart(cart);
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cart-count').textContent = count;
+  const itemsEl = document.getElementById('drawer-items');
+  if(cart.length === 0){
+    itemsEl.innerHTML = `<div class="drawer-empty">Twój koszyk jest pusty</div>`;
+  } else {
+    itemsEl.innerHTML = cart.map(c=>{
+      const p = products.find(x=>x.id===c.id);
+      const finishKey = c.finish || "silver";
+      const finish = finishes[finishKey] || finishes.silver;
+      const price = itemPrice(p, finishKey);
+      return `<div class="drawer-item">
+        <div class="thumb"><img src="${productImage(p, finishKey)}" alt="${p.name} — ${finish.label}"></div>
+        <div>
+          <div>${p.name}</div>
+          <div class="finish">${finish.label} wersja</div>
+          <div class="qty">${c.qty} × ${price} zł</div>
+        </div>
+        <button class="remove" onclick="removeFromCart(${p.id}, '${finishKey}')">&times;</button>
+      </div>`;
+    }).join('');
+  }
+  const subtotal = cart.reduce((s,c)=>{
+    const p = products.find(x=>x.id===c.id);
+    return s + itemPrice(p, c.finish || "silver") * c.qty;
+  },0);
+  const discount = promoApplied ? Math.round(subtotal * PROMO_DISCOUNT) : 0;
+  const shipping = subtotal > 0 && subtotal < FREE_SHIPPING_THRESHOLD ? SHIPPING_FEE : 0;
+  const total = subtotal - discount + shipping;
+  document.getElementById('drawer-subtotal').textContent = subtotal + ' zł';
+  const discRow = document.getElementById('drawer-discount-row');
+  if(discount > 0){
+    discRow.style.display = 'flex';
+    document.getElementById('drawer-discount').textContent = '-' + discount + ' zł';
+  } else {
+    discRow.style.display = 'none';
+  }
+  const shippingRow = document.getElementById('drawer-shipping-row');
+  if(shipping > 0){
+    shippingRow.style.display = 'flex';
+    document.getElementById('drawer-shipping').textContent = shipping + ' zł';
+  } else {
+    shippingRow.style.display = 'none';
+  }
+  document.getElementById('drawer-total').textContent = total + ' zł';
+}
+function openCart(){
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+}
+function closeCart(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+
+// ---- INTEGRACJA STRIPE ----
+// Podmień na publiczny adres swojego backendu (patrz server.js),
+// np. "https://twoja-domena.pl/create-checkout-session"
+const STATUS_ENDPOINT = "https://server-hp9w.vercel.app/api/session-status";
+
+function buyNow(id){
+  addToCart(id);
+  goToStripeCheckout();
+}
+
+async function goToStripeCheckout(){
+  if(cart.length === 0){ return; }
+  const subtotal = cart.reduce((sum,item) => {
+    const product = products.find(product => product.id === item.id);
+    return sum + itemPrice(product, item.finish || "silver") * item.qty;
+  }, 0);
+  const shipping = subtotal > 0 && subtotal < FREE_SHIPPING_THRESHOLD ? SHIPPING_FEE : 0;
+  const payload = { items: cart, promo: promoApplied ? PROMO_CODE : null, shipping: shipping };
+  const btn = document.querySelector('.checkout-btn');
+  const originalLabel = btn ? btn.innerHTML : null;
+  if(btn){ btn.disabled = true; btn.textContent = "Łączenie z płatnością..."; }
+  try {
+    const res = await fetch(STRIPE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if(!res.ok) throw new Error('Błąd serwera płatności');
+    const data = await res.json();
+    if(data.url){
+      window.location.href = data.url; // przekierowanie do Stripe Checkout
+    } else {
+      throw new Error('Brak adresu sesji Stripe w odpowiedzi');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Nie udało się połączyć z płatnością. Sprawdź adres STRIPE_ENDPOINT w kodzie strony.\n(' + err.message + ')');
+    if(btn){ btn.disabled = false; btn.innerHTML = originalLabel; }
+  }
+}
+
+renderCart();
+</script>
+
+</body>
+</html>
