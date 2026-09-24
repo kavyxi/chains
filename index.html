@@ -10,7 +10,7 @@
 <meta name="keywords" content="łańcuszki, biżuteria diamentowa, srebrna biżuteria, cyrkonie, KAVYXI CHAINS, biżuteria damska, naszyjniki">
 <meta name="robots" content="index, follow">
 <meta name="author" content="KAVYXI CHAINS">
-<link rel="canonical" href="https://kavyxichains.pl/">
+<link rel="canonical" href="https://kavyxi.github.io/chains/">
 
 <!-- ===== SEO: Open Graph (Facebook, Messenger, LinkedIn) ===== -->
 <meta property="og:type" content="website">
@@ -18,7 +18,7 @@
 <meta property="og:title" content="KAVYXI CHAINS — Złote łańcuszki | Kolekcja Aqua">
 <meta property="og:description" content="Mossaintowe łańcuchy hip-hop. Lekkie, wodoodporne, stworzone do noszenia codziennie.">
 <meta property="og:locale" content="pl_PL">
-<meta property="og:url" content="https://kavyxi.github.io/chains">
+<meta property="og:url" content="https://kavyxi.github.io/chains/">
 
 <!-- ===== SEO: Twitter Card ===== -->
 <meta name="twitter:card" content="summary_large_image">
@@ -36,9 +36,9 @@
   "@type": "Store",
   "name": "KAVYXI CHAINS",
   "description": "Sklep internetowy z diamentową biżuterią — łańcuszki z cyrkoniami szlifu diamentowego.",
-  "image": "https://kavyxichains.pl/og-image.jpg",
-  "priceRange": "159-299 PLN",
-  "url": "https://kavyxi.github.io/chains"
+  "image": "https://kavyxi.github.io/chains/og-image.jpg",
+  "priceRange": "79-149 PLN",
+  "url": "https://kavyxi.github.io/chains/"
 }
 </script>
 
@@ -72,7 +72,6 @@
   a{color:inherit;}
   img{max-width:100%;}
 
-  /* top notice bar */
   .topbar{
     background:var(--aqua-deep);
     color:var(--white);
@@ -113,7 +112,6 @@
   }
   .cart-btn:hover{background:var(--aqua-deep);color:var(--white);}
 
-  /* hero */
   .hero{
     position:relative;
     background:radial-gradient(120% 140% at 20% 0%, var(--aqua-mist) 0%, var(--aqua-soft) 45%, var(--aqua) 100%);
@@ -156,7 +154,6 @@
   }
   .hero .cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -18px rgba(11,46,48,.7);}
 
-  /* products */
   .section-title{
     text-align:center;max-width:640px;margin:0 auto;padding:4.5rem 1.5rem 1rem;
   }
@@ -230,7 +227,6 @@
   .btn.primary{background:var(--ink);border-color:var(--ink);color:var(--white);}
   .btn.primary:hover{background:var(--aqua-deep);border-color:var(--aqua-deep);}
 
-  /* trust strip */
   .trust{
     background:var(--aqua-mist);
     padding:2.6rem 1.5rem;
@@ -248,7 +244,6 @@
   footer .flogo{font-family:'Cormorant Garamond';font-size:1.3rem;letter-spacing:.1em;color:var(--white);margin-bottom:.6rem;}
   footer p{color:#9fc4c5;margin-top:.4rem;}
 
-  /* cart drawer */
   .overlay{
     position:fixed;inset:0;background:rgba(11,46,48,.4);
     opacity:0;pointer-events:none;transition:opacity .25s;z-index:40;
@@ -384,7 +379,7 @@
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
       Przejdź do płatności
     </button>
-    <p class="stripe-note">Miejsce na integrację Stripe Checkout — patrz funkcja goToStripeCheckout()</p>
+    <p class="stripe-note">Płatność przez Stripe Checkout</p>
   </div>
 </div>
 
@@ -617,8 +612,7 @@ function closeCart(){
 }
 
 // ---- INTEGRACJA STRIPE ----
-// Podmień na publiczny adres swojego backendu (patrz server.js),
-// np. "https://twoja-domena.pl/create-checkout-session"
+const STRIPE_ENDPOINT = "https://server-hp9w.vercel.app/api/create-checkout-session";
 const STATUS_ENDPOINT = "https://server-hp9w.vercel.app/api/session-status";
 
 function buyNow(id){
