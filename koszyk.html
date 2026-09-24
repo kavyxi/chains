@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Koszyk — KAVYXI CHAINS</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --aqua-deep:#0d6e73;
+    --aqua:#3fb6bb;
+    --aqua-soft:#bfeaec;
+    --aqua-mist:#eaf9f9;
+    --white:#ffffff;
+    --ink:#0b2e30;
+    --sale:#e0574b;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Jost',sans-serif;
+    background:var(--white);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,.serif{font-family:'Cormorant Garamond',serif;}
+  a{color:inherit;}
+  img{max-width:100%;}
+
+  header{
+    position:sticky; top:0; z-index:20;
+    padding-top:env(safe-area-inset-top,0px);
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--aqua-soft);
+  }
+  .nav{
+    max-width:1000px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1rem 1.5rem;
+  }
+  .logo{font-size:1.4rem;letter-spacing:.14em;font-weight:600;color:var(--aqua-deep);text-decoration:none;}
+  .logo span{color:var(--ink);font-weight:400;}
+  .back-link{
+    font-size:.82rem;color:var(--aqua-deep);text-decoration:none;
+    display:flex;align-items:center;gap:.35rem;
+  }
+  .back-link:hover{text-decoration:underline;}
+
+  main{max-width:1000px;margin:0 auto;padding:2.5rem 1.5rem 6rem;}
+  h1{font-size:clamp(1.9rem,4vw,2.6rem);font-weight:500;margin-bottom:2rem;}
+
+  .layout{display:grid;grid-template-columns:1fr 340px;gap:2.5rem;align-items:start;}
+  @media(max-width:800px){.layout{grid-template-columns:1fr;}}
+
+  .items{display:flex;flex-direction:column;gap:1.1rem;}
+  .item{
+    display:grid;grid-template-columns:84px 1fr auto;gap:1rem;align-items:center;
+    border:1px solid #e3f2f2;border-radius:6px;padding:1rem;
+  }
+  @media(max-width:480px){
+    .item{grid-template-columns:64px 1fr;grid-template-rows:auto auto;}
+    .item-remove{grid-column:2;justify-self:end;}
+  }
+  .item-thumb{
+    width:84px;height:84px;border-radius:4px;overflow:hidden;flex-shrink:0;
+    background:linear-gradient(155deg,var(--aqua-mist),var(--aqua-soft));
+    display:flex;align-items:center;justify-content:center;
+  }
+  @media(max-width:480px){.item-thumb{width:64px;height:64px;}}
+  .item-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .item-info h3{font-size:1.08rem;font-weight:500;margin-bottom:.2rem;}
+  .item-info .finish{font-size:.78rem;color:var(--aqua-deep);margin-bottom:.5rem;}
+  .item-info .price{font-size:.9rem;color:#5b7f80;}
+  .qty-control{
+    display:inline-flex;align-items:center;border:1px solid var(--aqua-soft);border-radius:999px;
+    margin-top:.6rem;
+  }
+  .qty-control button{
+    width:28px;height:28px;border:none;background:none;color:var(--aqua-deep);
+    font-size:1rem;cursor:pointer;line-height:1;
+  }
+  .qty-control button:hover{background:var(--aqua-mist);border-radius:50%;}
+  .qty-control span{min-width:26px;text-align:center;font-size:.88rem;}
+  .item-remove{
+    background:none;border:none;color:#b7cbcb;cursor:pointer;font-size:1.3rem;
+    padding:.3rem;align-self:start;
+  }
+  .item-remove:hover{color:var(--sale);}
+  .line-total{font-size:1rem;font-weight:600;color:var(--ink);margin-top:.6rem;}
+
+  .empty{
+    text-align:center;padding:4rem 1rem;color:#8fabab;
+  }
+  .empty a{
+    display:inline-block;margin-top:1.2rem;background:var(--ink);color:var(--white);
+    text-decoration:none;padding:.75rem 1.8rem;border-radius:999px;font-size:.85rem;
+  }
+
+  .summary{
+    border:1px solid var(--aqua-soft);border-radius:6px;padding:1.4rem 1.3rem;
+    background:var(--aqua-mist);position:sticky;top:90px;
+  }
+  .summary h2{font-size:1.2rem;margin-bottom:1rem;font-weight:500;}
+  .promo-row{display:flex;gap:.5rem;margin-bottom:1rem;}
+  .promo-row input{
+    flex:1;border:1px solid var(--aqua-soft);border-radius:4px;
+    padding:.6rem .7rem;font-family:'Jost';font-size:.82rem;
+    text-transform:uppercase;letter-spacing:.04em;color:var(--ink);background:var(--white);
+  }
+  .promo-row input:focus{outline:none;border-color:var(--aqua-deep);}
+  .promo-row button{
+    border:1px solid var(--ink);background:none;color:var(--ink);
+    border-radius:4px;padding:.6rem 1rem;font-family:'Jost';font-size:.78rem;
+    letter-spacing:.03em;cursor:pointer;transition:background .2s,color .2s;
+  }
+  .promo-row button:hover{background:var(--ink);color:var(--white);}
+  .promo-msg{font-size:.74rem;margin:-.5rem 0 .8rem;min-height:1em;}
+  .promo-msg.ok{color:#0d6e73;}
+  .promo-msg.err{color:#e0574b;}
+  .total-line{display:flex;justify-content:space-between;font-size:.85rem;color:#4d7274;margin-bottom:.5rem;}
+  .total-line.discount{color:#e0574b;}
+  .total-final{
+    display:flex;justify-content:space-between;font-size:1.05rem;margin-top:1rem;
+    padding-top:1rem;border-top:1px solid var(--aqua-soft);
+  }
+  .total-final strong{font-family:'Cormorant Garamond';font-size:1.5rem;}
+  .checkout-btn{
+    width:100%;padding:.9rem;border:none;border-radius:4px;margin-top:1.2rem;
+    background:var(--ink);color:var(--white);font-family:'Jost';font-size:.88rem;
+    letter-spacing:.04em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;
+  }
+  .checkout-btn:hover{background:var(--aqua-deep);}
+  .checkout-btn:disabled{opacity:.6;cursor:default;}
+  .free-shipping-note{font-size:.75rem;color:var(--aqua-deep);margin-top:.9rem;text-align:center;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="index.html">KAVYXI <span>CHAINS</span></a>
+    <a class="back-link" href="index.html">&larr; Kontynuuj zakupy</a>
+  </div>
+</header>
+
+<main>
+  <h1>Twój koszyk</h1>
+  <div id="cart-root"></div>
+</main>
+
+<script>
+// ---- Dane produktów (te same co na stronie głównej) ----
+const products = [
+  {id:1, name:"Iced Cuban Chain", price:149, image:"zdj1.png", goldImage:"zdj7.png"},
+  {id:2, name:"Iced Cuban Bracelet", price:109, image:"zdj2.png", goldImage:"zdj8.png"},
+  {id:3, name:"Silver Chain", price:109, image:"zdj3.png", goldImage:"zdj9.png"},
+  {id:4, name:"Mini Iced Cross", price:89, image:"zdj4.png", goldImage:"zdj10.png"},
+  {id:5, name:"Classic Tennis Chain", price:139, image:"zdj5.png", goldImage:"zdj11.png"},
+  {id:6, name:"Classic Tennis Bracelet", price:79, image:"zdj6.png", goldImage:"zdj12.png"},
+];
+
+const finishes = {
+  silver: { label: "Srebrna", priceAdd: 0 },
+  gold: { label: "Złota", priceAdd: 0 }
+};
+
+const PROMO_CODE = "ICED";
+const PROMO_DISCOUNT = 0.20;
+const FREE_SHIPPING_THRESHOLD = 299;
+const SHIPPING_FEE = 10;
+
+function normalizeCart(items){
+  if(!Array.isArray(items)) return [];
+  return items
+    .map(item => ({
+      id:Number(item.id),
+      finish:finishes[item.finish] ? item.finish : "silver",
+      qty:Math.max(1, Number(item.qty) || 1)
+    }))
+    .filter(item => products.some(p => p.id === item.id));
+}
+
+function loadCart(){
+  try{
+    const saved = localStorage.getItem("kavyxi_cart");
+    return saved ? normalizeCart(JSON.parse(saved)) : [];
+  }catch(e){
+    console.error("Nie udało się wczytać koszyka:", e);
+    return [];
+  }
+}
+
+function saveCart(cart){
+  localStorage.setItem("kavyxi_cart", JSON.stringify(normalizeCart(cart)));
+}
+
+function loadPromo(){
+  return localStorage.getItem("kavyxi_promo") === PROMO_CODE;
+}
+
+function savePromo(applied){
+  if(applied){ localStorage.setItem("kavyxi_promo", PROMO_CODE); }
+  else{ localStorage.removeItem("kavyxi_promo"); }
+}
+
+let cart = loadCart();
+let promoApplied = loadPromo();
+
+function itemPrice(product, finish){
+  return product.price + (finishes[finish]?.priceAdd || 0);
+}
+function productImage(product, finish){
+  return finish === "gold" ? product.goldImage : product.image;
+}
+
+function changeQty(id, finish, delta){
+  const item = cart.find(c => c.id === id && c.finish === finish);
+  if(!item) return;
+  item.qty = Math.max(1, item.qty + delta);
+  saveCart(cart);
+  render();
+}
+function setQty(id, finish, value){
+  const item = cart.find(c => c.id === id && c.finish === finish);
+  if(!item) return;
+  item.qty = Math.max(1, Math.min(99, Number(value) || 1));
+  saveCart(cart);
+  render();
+}
+function removeItem(id, finish){
+  cart = cart.filter(c => !(c.id === id && c.finish === finish));
+  saveCart(cart);
+  render();
+}
+
+function applyPromo(){
+  const input = document.getElementById('promo-input');
+  const msg = document.getElementById('promo-msg');
+  const code = input.value.trim().toUpperCase();
+  if(code === PROMO_CODE){
+    promoApplied = true;
+    savePromo(true);
+    msg.textContent = "Kod ICED zastosowany — rabat 20%";
+    msg.className = "promo-msg ok";
+  } else {
+    promoApplied = false;
+    savePromo(false);
+    msg.textContent = "Nieprawidłowy kod rabatowy";
+    msg.className = "promo-msg err";
+  }
+  render();
+}
+
+function calcTotals(){
+  const subtotal = cart.reduce((s,c)=>{
+    const p = products.find(x=>x.id===c.id);
+    return s + itemPrice(p, c.finish) * c.qty;
+  },0);
+  const discount = promoApplied ? Math.round(subtotal * PROMO_DISCOUNT) : 0;
+  const shipping = subtotal > 0 && (subtotal - discount) < FREE_SHIPPING_THRESHOLD ? SHIPPING_FEE : 0;
+  const total = subtotal - discount + shipping;
+  return { subtotal, discount, shipping, total };
+}
+
+function render(){
+  const root = document.getElementById('cart-root');
+
+  if(cart.length === 0){
+    root.innerHTML = `<div class="empty">
+      <p>Twój koszyk jest pusty.</p>
+      <a href="index.html">Wróć do sklepu</a>
+    </div>`;
+    return;
+  }
+
+  const { subtotal, discount, shipping, total } = calcTotals();
+
+  const itemsHtml = cart.map(c => {
+    const p = products.find(x => x.id === c.id);
+    const finish = finishes[c.finish];
+    const lineTotal = itemPrice(p, c.finish) * c.qty;
+    return `
+      <div class="item">
+        <div class="item-thumb"><img src="${productImage(p, c.finish)}" alt="${p.name} — ${finish.label}"></div>
+        <div class="item-info">
+          <h3>${p.name}</h3>
+          <div class="finish">${finish.label} wersja</div>
+          <div class="price">${itemPrice(p, c.finish)} zł / szt.</div>
+          <div class="qty-control">
+            <button onclick="changeQty(${p.id}, '${c.finish}', -1)" aria-label="Zmniejsz ilość">&minus;</button>
+            <span>${c.qty}</span>
+            <button onclick="changeQty(${p.id}, '${c.finish}', 1)" aria-label="Zwiększ ilość">+</button>
+          </div>
+          <div class="line-total">${lineTotal} zł</div>
+        </div>
+        <button class="item-remove" onclick="removeItem(${p.id}, '${c.finish}')" aria-label="Usuń produkt">&times;</button>
+      </div>
+    `;
+  }).join('');
+
+  root.innerHTML = `
+    <div class="layout">
+      <div class="items">${itemsHtml}</div>
+      <div class="summary">
+        <h2>Podsumowanie</h2>
+        <div class="promo-row">
+          <input type="text" id="promo-input" placeholder="Kod rabatowy" maxlength="20" value="${promoApplied ? PROMO_CODE : ''}">
+          <button onclick="applyPromo()">Zastosuj</button>
+        </div>
+        <div class="promo-msg" id="promo-msg"></div>
+        <div class="total-line"><span>Suma częściowa</span><span>${subtotal} zł</span></div>
+        ${discount > 0 ? `<div class="total-line discount"><span>Rabat ICED (-20%)</span><span>-${discount} zł</span></div>` : ''}
+        ${shipping > 0 ? `<div class="total-line"><span>Dostawa</span><span>${shipping} zł</span></div>` : `<div class="total-line"><span>Dostawa</span><span>Gratis</span></div>`}
+        <div class="total-final"><span>Razem</span><strong>${total} zł</strong></div>
+        <button class="checkout-btn" onclick="goToStripeCheckout()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          Przejdź do płatności
+        </button>
+        ${shipping > 0 ? `<div class="free-shipping-note">Dodaj produkty za ${FREE_SHIPPING_THRESHOLD - (subtotal - discount)} zł, aby uzyskać darmową dostawę</div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+// ---- INTEGRACJA STRIPE ----
+const STRIPE_ENDPOINT = "https://server-hp9w.vercel.app/api/create-checkout-session";
+
+async function goToStripeCheckout(){
+  if(cart.length === 0) return;
+  const { shipping } = calcTotals();
+  const payload = { items: cart, promo: promoApplied ? PROMO_CODE : null, shipping };
+  const btn = document.querySelector('.checkout-btn');
+  const originalLabel = btn ? btn.innerHTML : null;
+  if(btn){ btn.disabled = true; btn.textContent = "Łączenie z płatnością..."; }
+  try {
+    const res = await fetch(STRIPE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if(!res.ok) throw new Error('Błąd serwera płatności');
+    const data = await res.json();
+    if(data.url){
+      window.location.href = data.url;
+    } else {
+      throw new Error('Brak adresu sesji Stripe w odpowiedzi');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Nie udało się połączyć z płatnością. Sprawdź adres STRIPE_ENDPOINT w kodzie strony.\n(' + err.message + ')');
+    if(btn){ btn.disabled = false; btn.innerHTML = originalLabel; }
+  }
+}
+
+render();
+</script>
+
+</body>
+</html>

@@ -244,68 +244,6 @@
   footer .flogo{font-family:'Cormorant Garamond';font-size:1.3rem;letter-spacing:.1em;color:var(--white);margin-bottom:.6rem;}
   footer p{color:#9fc4c5;margin-top:.4rem;}
 
-  .overlay{
-    position:fixed;inset:0;background:rgba(11,46,48,.4);
-    opacity:0;pointer-events:none;transition:opacity .25s;z-index:40;
-  }
-  .overlay.open{opacity:1;pointer-events:auto;}
-  .drawer{
-    position:fixed;top:0;right:0;height:100%;width:min(400px,100%);
-    background:var(--white);z-index:50;
-    transform:translateX(100%);transition:transform .3s ease;
-    display:flex;flex-direction:column;
-    padding-top:env(safe-area-inset-top,0px);
-    padding-bottom:env(safe-area-inset-bottom,0px);
-  }
-  .drawer.open{transform:translateX(0);}
-  .drawer-head{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:1.3rem 1.4rem;border-bottom:1px solid var(--aqua-soft);
-  }
-  .drawer-head h3{font-family:'Cormorant Garamond';font-size:1.4rem;}
-  .drawer-head button{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--ink);}
-  .drawer-items{flex:1;overflow-y:auto;padding:1rem 1.4rem;display:flex;flex-direction:column;gap:1rem;}
-  .drawer-item{display:flex;gap:.8rem;align-items:center;font-size:.85rem;}
-  .drawer-item .thumb{
-    width:58px;height:58px;border-radius:4px;flex-shrink:0;
-    background:linear-gradient(155deg,var(--aqua-mist),var(--aqua-soft));
-    display:flex;align-items:center;justify-content:center;overflow:hidden;
-  }
-  .drawer-item .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-  .drawer-item .finish{color:#0d6e73;font-size:.72rem;margin-top:.1rem;}
-  .drawer-item .qty{color:#5b7f80;font-size:.78rem;}
-  .drawer-item .remove{margin-left:auto;background:none;border:none;color:#b7cbcb;cursor:pointer;font-size:1rem;}
-  .drawer-empty{color:#8fabab;font-size:.85rem;text-align:center;padding:2rem 0;}
-  .drawer-foot{border-top:1px solid var(--aqua-soft);padding:1.2rem 1.4rem 1.4rem;}
-  .drawer-foot .total{display:flex;justify-content:space-between;font-size:1rem;margin-bottom:1rem;}
-  .drawer-foot .total strong{font-family:'Cormorant Garamond';font-size:1.3rem;}
-  .checkout-btn{
-    width:100%;padding:.9rem;border:none;border-radius:4px;
-    background:var(--ink);color:var(--white);font-family:'Jost';font-size:.88rem;
-    letter-spacing:.04em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;
-  }
-  .checkout-btn:hover{background:var(--aqua-deep);}
-  .stripe-note{font-size:.68rem;color:#8fabab;text-align:center;margin-top:.6rem;}
-
-  .promo-row{display:flex;gap:.5rem;margin-bottom:1rem;}
-  .promo-row input{
-    flex:1;border:1px solid var(--aqua-soft);border-radius:4px;
-    padding:.6rem .7rem;font-family:'Jost';font-size:.82rem;
-    text-transform:uppercase;letter-spacing:.04em;color:var(--ink);
-  }
-  .promo-row input:focus{outline:none;border-color:var(--aqua-deep);}
-  .promo-row button{
-    border:1px solid var(--ink);background:none;color:var(--ink);
-    border-radius:4px;padding:.6rem 1rem;font-family:'Jost';font-size:.78rem;
-    letter-spacing:.03em;cursor:pointer;transition:background .2s,color .2s;
-  }
-  .promo-row button:hover{background:var(--ink);color:var(--white);}
-  .promo-msg{font-size:.74rem;margin:-.5rem 0 .8rem;min-height:1em;}
-  .promo-msg.ok{color:#0d6e73;}
-  .promo-msg.err{color:#e0574b;}
-  .total-line{display:flex;justify-content:space-between;font-size:.85rem;color:#5b7f80;margin-bottom:.35rem;}
-  .total-line.discount{color:#e0574b;}
-
   @media (prefers-color-scheme: dark){}
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important;}
@@ -322,10 +260,10 @@
 <header>
   <div class="nav">
     <div class="logo">KAVYXI <span>CHAINS</span></div>
-    <button class="cart-btn" onclick="openCart()">
+    <a class="cart-btn" href="koszyk.html">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L21 7H6"/><circle cx="10" cy="21" r="1"/><circle cx="17" cy="21" r="1"/></svg>
       Koszyk (<span id="cart-count">0</span>)
-    </button>
+    </a>
   </div>
 </header>
 
@@ -357,31 +295,6 @@
   <p>Biżuteria stworzona dla tych, którzy kochają subtelny blask.</p>
   <p>© 2026 KAVYXI CHAINS. Wszystkie prawa zastrzeżone.</p>
 </footer>
-
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
-<div class="drawer" id="drawer">
-  <div class="drawer-head">
-    <h3>Twój koszyk</h3>
-    <button onclick="closeCart()">&times;</button>
-  </div>
-  <div class="drawer-items" id="drawer-items"></div>
-  <div class="drawer-foot">
-    <div class="promo-row">
-      <input type="text" id="promo-input" placeholder="Kod rabatowy" maxlength="20">
-      <button onclick="applyPromo()">Zastosuj</button>
-    </div>
-    <div class="promo-msg" id="promo-msg"></div>
-    <div class="total-line"><span>Suma częściowa</span><span id="drawer-subtotal">0 zł</span></div>
-    <div class="total-line discount" id="drawer-discount-row" style="display:none;"><span>Rabat ICED (-20%)</span><span id="drawer-discount">-0 zł</span></div>
-    <div class="total-line" id="drawer-shipping-row" style="display:none;"><span>Dostawa</span><span id="drawer-shipping">0 zł</span></div>
-    <div class="total"><span>Razem</span><strong id="drawer-total">0 zł</strong></div>
-    <button class="checkout-btn" onclick="goToStripeCheckout()">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
-      Przejdź do płatności
-    </button>
-    <p class="stripe-note">Płatność przez Stripe Checkout</p>
-  </div>
-</div>
 
 <script>
 // ---- Ikony placeholder (do podmiany na zdj1.png dla każdego produktu) ----
@@ -477,181 +390,53 @@ grid.innerHTML = products.map((p, index) => `
   </div>
 `).join('');
 
-// ---- Koszyk (stan w pamięci, per widz przeglądarki) ----
+// ---- Koszyk: strona główna tylko dodaje produkty i pokazuje licznik.
+// Pełny widok koszyka (edycja ilości, usuwanie, kod rabatowy, płatność) jest na koszyk.html.
 let cart = [];
-
-let promoApplied = false;
 
 try {
   const savedCart = localStorage.getItem("kavyxi_cart");
-
   if (savedCart) {
     cart = normalizeCart(JSON.parse(savedCart));
   }
 } catch (error) {
   console.error("Nie udało się wczytać koszyka:", error);
 }
-const PROMO_CODE = "ICED";
-const PROMO_DISCOUNT = 0.20;
-const FREE_SHIPPING_THRESHOLD = 299;
-const SHIPPING_FEE = 10;
-
-function applyPromo(){
-  const input = document.getElementById('promo-input');
-  const msg = document.getElementById('promo-msg');
-  const code = input.value.trim().toUpperCase();
-  if(code === PROMO_CODE){
-    promoApplied = true;
-    msg.textContent = "Kod ICED zastosowany — rabat 20%";
-    msg.className = "promo-msg ok";
-  } else {
-    promoApplied = false;
-    msg.textContent = "Nieprawidłowy kod rabatowy";
-    msg.className = "promo-msg err";
-  }
-  renderCart();
-}
 
 function saveCart() {
   cart = normalizeCart(cart);
-  localStorage.setItem(
-    "kavyxi_cart",
-    JSON.stringify(cart)
-  );
+  localStorage.setItem("kavyxi_cart", JSON.stringify(cart));
+}
+
+function updateCartCount(){
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cart-count').textContent = count;
 }
 
 function addToCart(id, finish = "silver"){
   id = Number(id);
   finish = finishes[finish] ? finish : "silver";
 
-  const item = cart.find(
-    c => c.id === id && c.finish === finish
-  );
-
+  const item = cart.find(c => c.id === id && c.finish === finish);
   if(item){
     item.qty++;
   }else{
-    cart.push({
-      id:id,
-      finish:finish,
-      qty:1
-    });
+    cart.push({ id, finish, qty:1 });
   }
 
   saveCart();
-  renderCart();
-  openCart();
-}
-function removeFromCart(id, finish){
-  id = Number(id);
-  finish = finishes[finish] ? finish : "silver";
+  updateCartCount();
 
-  cart = cart.filter(
-    c => !(c.id === id && c.finish === finish)
-  );
-
-  saveCart();
-  renderCart();
-}
-
-function renderCart(){
-  cart = normalizeCart(cart);
-  const count = cart.reduce((s,c)=>s+c.qty,0);
-  document.getElementById('cart-count').textContent = count;
-  const itemsEl = document.getElementById('drawer-items');
-  if(cart.length === 0){
-    itemsEl.innerHTML = `<div class="drawer-empty">Twój koszyk jest pusty</div>`;
-  } else {
-    itemsEl.innerHTML = cart.map(c=>{
-      const p = products.find(x=>x.id===c.id);
-      const finishKey = c.finish || "silver";
-      const finish = finishes[finishKey] || finishes.silver;
-      const price = itemPrice(p, finishKey);
-      return `<div class="drawer-item">
-        <div class="thumb"><img src="${productImage(p, finishKey)}" alt="${p.name} — ${finish.label}"></div>
-        <div>
-          <div>${p.name}</div>
-          <div class="finish">${finish.label} wersja</div>
-          <div class="qty">${c.qty} × ${price} zł</div>
-        </div>
-        <button class="remove" onclick="removeFromCart(${p.id}, '${finishKey}')">&times;</button>
-      </div>`;
-    }).join('');
-  }
-  const subtotal = cart.reduce((s,c)=>{
-    const p = products.find(x=>x.id===c.id);
-    return s + itemPrice(p, c.finish || "silver") * c.qty;
-  },0);
-  const discount = promoApplied ? Math.round(subtotal * PROMO_DISCOUNT) : 0;
-  const shipping = subtotal > 0 && subtotal < FREE_SHIPPING_THRESHOLD ? SHIPPING_FEE : 0;
-  const total = subtotal - discount + shipping;
-  document.getElementById('drawer-subtotal').textContent = subtotal + ' zł';
-  const discRow = document.getElementById('drawer-discount-row');
-  if(discount > 0){
-    discRow.style.display = 'flex';
-    document.getElementById('drawer-discount').textContent = '-' + discount + ' zł';
-  } else {
-    discRow.style.display = 'none';
-  }
-  const shippingRow = document.getElementById('drawer-shipping-row');
-  if(shipping > 0){
-    shippingRow.style.display = 'flex';
-    document.getElementById('drawer-shipping').textContent = shipping + ' zł';
-  } else {
-    shippingRow.style.display = 'none';
-  }
-  document.getElementById('drawer-total').textContent = total + ' zł';
-}
-function openCart(){
-  document.getElementById('drawer').classList.add('open');
-  document.getElementById('overlay').classList.add('open');
-}
-function closeCart(){
-  document.getElementById('drawer').classList.remove('open');
-  document.getElementById('overlay').classList.remove('open');
-}
-
-// ---- INTEGRACJA STRIPE ----
-const STRIPE_ENDPOINT = "https://server-hp9w.vercel.app/api/create-checkout-session";
-const STATUS_ENDPOINT = "https://server-hp9w.vercel.app/api/session-status";
-
-function buyNow(id){
-  addToCart(id);
-  goToStripeCheckout();
-}
-
-async function goToStripeCheckout(){
-  if(cart.length === 0){ return; }
-  const subtotal = cart.reduce((sum,item) => {
-    const product = products.find(product => product.id === item.id);
-    return sum + itemPrice(product, item.finish || "silver") * item.qty;
-  }, 0);
-  const shipping = subtotal > 0 && subtotal < FREE_SHIPPING_THRESHOLD ? SHIPPING_FEE : 0;
-  const payload = { items: cart, promo: promoApplied ? PROMO_CODE : null, shipping: shipping };
-  const btn = document.querySelector('.checkout-btn');
-  const originalLabel = btn ? btn.innerHTML : null;
-  if(btn){ btn.disabled = true; btn.textContent = "Łączenie z płatnością..."; }
-  try {
-    const res = await fetch(STRIPE_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    if(!res.ok) throw new Error('Błąd serwera płatności');
-    const data = await res.json();
-    if(data.url){
-      window.location.href = data.url; // przekierowanie do Stripe Checkout
-    } else {
-      throw new Error('Brak adresu sesji Stripe w odpowiedzi');
-    }
-  } catch (err) {
-    console.error(err);
-    alert('Nie udało się połączyć z płatnością. Sprawdź adres STRIPE_ENDPOINT w kodzie strony.\n(' + err.message + ')');
-    if(btn){ btn.disabled = false; btn.innerHTML = originalLabel; }
+  // Krótkie potwierdzenie na przycisku zamiast wysuwanego panelu
+  const btn = document.querySelector(`.card button[onclick*="addToCart(${id},"]`);
+  if(btn){
+    const original = btn.textContent;
+    btn.textContent = "Dodano ✓";
+    setTimeout(() => { btn.textContent = original; }, 1200);
   }
 }
 
-renderCart();
+updateCartCount();
 </script>
 
 </body>
